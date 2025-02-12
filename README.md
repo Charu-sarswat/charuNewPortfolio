@@ -37,10 +37,11 @@ Built using React and Tailwind CSS
 Installation
 
 To run this project locally, follow these steps:
+netlify :https://app.netlify.com/sites/myname-portfolio/overview
 
 Clone the repository:
 
-git clone https://github.com/Charu-sarswat/portfolio-react.git
+git clone https://github.com/Charu-sarswat/charuNewPortfolio
 
 Navigate to the project directory:
 
