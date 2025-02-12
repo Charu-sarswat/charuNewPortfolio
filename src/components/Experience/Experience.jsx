@@ -5,7 +5,7 @@ import { RiNetflixFill } from "react-icons/ri";
 
 const Experience = () => {
   return (
-    <div id="Experience" className="p-10 md:p-24 bg-[#0A192F] text-white">
+    <div id="Experience" className="p-10 md:p-24 bg-sky-400 text-white">
       {/* Heading */}
       <h1 className="text-3xl md:text-5xl font-bold text-center mb-12 border-b-2 border-gray-500 inline-block px-6">
         Experience
@@ -25,10 +25,10 @@ const Experience = () => {
           ].map((tech, index) => (
             <span
               key={index}
-              className="p-5 bg-zinc-900 flex flex-col items-center rounded-2xl shadow-md hover:bg-opacity-80 transition-transform duration-300 hover:scale-110 cursor-pointer"
+              className="p-8 bg-zinc-900 flex flex-col items-center rounded-2xl shadow-md hover:bg-opacity-80 transition-transform duration-300 hover:scale-110 cursor-pointer"
             >
-              {tech.icon}
-              <p className="text-sm mt-2">{tech.name}</p>
+              <span className="text-5xl">{tech.icon}</span> {/* Increased icon size */}
+              <p className="text-lg mt-2">{tech.name}</p> {/* Increased font size */}
             </span>
           ))}
         </div>
@@ -37,24 +37,24 @@ const Experience = () => {
         <div className="space-y-6">
           {[
             {
-              company: "Google",
-              icon: <FaGoogle color="#4285F4" />,
+              company: "Emertex",
+              icon: <span className="text-4xl font-bold text-blue-500">E</span>,
               role: "Software Engineer",
-              date: "Sept 2023 - Present",
-              tasks: ["Work as software developer", "Senior SDE-developer"],
+              date: "January 2025 - Present",
+              tasks: ["Work as software developer", "Internship"],
             },
             {
-              company: "Netflix",
+              company: "Smart Intern",
               icon: <RiNetflixFill color="#E50914" />,
-              role: "Backend Developer",
-              date: "Jan 2022 - Aug 2023",
+              role: "Web Developer",
+              date: "Jan 2022 - March 2025",
               tasks: ["Developed scalable backend APIs", "Optimized database queries"],
             },
             {
-              company: "Amazon",
+              company: "Adi foundation",
               icon: <FaAmazon color="#FF9900" />,
               role: "Full Stack Developer",
-              date: "June 2020 - Dec 2021",
+              date: "June 2024 ",
               tasks: ["Built microservices architecture", "Integrated payment gateways"],
             },
           ].map((job, index) => (
