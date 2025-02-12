@@ -15,7 +15,8 @@ const Home = () => {
           <TextChange />
         </h1>
         <p className="text-sm md:text-2xl tracking-tight text-white">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, doloremque?
+        I am a passionate developer specializing in frontend, backend, and database development.
+        Hover over a section below to explore more!
         </p>
         <button
   className="mt-5 md:mt-10 text-white py-2 px-4 text-sm md:text-lg font-semibold rounded-3xl hover:opacity-85 duration-300 hover:scale-105"
