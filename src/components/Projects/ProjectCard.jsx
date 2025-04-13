@@ -53,8 +53,9 @@ const ProjectCard = ({ title, description, demoLink, sourceCodeLink, technologie
     >
       <div className="relative w-full h-full transform-style-preserve-3d transition-transform duration-700">
         <div className={`absolute w-full h-full rounded-2xl overflow-hidden 
-          backdrop-blur-lg border border-white/10 shadow-2xl 
-          bg-gradient-to-br ${getGradient()} bg-opacity-20`}>
+          backdrop-blur-sm border border-[#ea9f12]/10
+          bg-[#112240]/30 shadow-lg shadow-[#0a192f]/80
+          hover:shadow-xl hover:shadow-[#ea9f12]/10 transition-all duration-300`}>
           
           {/* Project Header */}
           <div className="relative h-[55%] overflow-hidden">
@@ -84,7 +85,7 @@ const ProjectCard = ({ title, description, demoLink, sourceCodeLink, technologie
           </div>
 
           {/* Content Section */}
-          <div className="relative px-6 py-6 h-[45%] flex flex-col bg-black/20">
+          <div className="relative px-6 py-6 h-[45%] flex flex-col bg-[#112240]/50 backdrop-blur-md">
             <motion.h3
               className="text-2xl font-bold text-white mb-3"
               initial={{ opacity: 0, x: -20 }}
@@ -131,8 +132,8 @@ const ProjectCard = ({ title, description, demoLink, sourceCodeLink, technologie
 
           {/* Decorative Elements */}
           <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-            <div className={`absolute top-4 left-4 w-32 h-32 rounded-full bg-gradient-to-r ${getGradient()} opacity-10 blur-3xl`}></div>
-            <div className={`absolute bottom-4 right-4 w-32 h-32 rounded-full bg-gradient-to-r ${getGradient()} opacity-10 blur-3xl`}></div>
+            <div className="absolute top-4 left-4 w-32 h-32 rounded-full bg-[#ea9f12]/10 blur-3xl"></div>
+            <div className="absolute bottom-4 right-4 w-32 h-32 rounded-full bg-[#ea9f12]/10 blur-3xl"></div>
           </div>
         </div>
 
