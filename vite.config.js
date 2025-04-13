@@ -8,4 +8,5 @@ export default defineConfig({
       overlay: false,
     },
   },
+  publicDir: 'public', // Ensure public directory is served
 });

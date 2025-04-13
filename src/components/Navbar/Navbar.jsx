@@ -4,10 +4,28 @@ import { RiCloseLine, RiMenu2Line } from "@remixicon/react";
 const Navbar = () => {
   const [menu, openMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   // Handle scroll event
   const handleScroll = () => {
     setScrolled(window.scrollY > 50);
+    
+    // Determine active section based on scroll position
+    const sections = ["home", "about", "experience", "projects", "contact"];
+    const scrollPosition = window.scrollY + 100;
+    
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const offsetTop = element.offsetTop;
+        const offsetHeight = element.offsetHeight;
+        
+        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          setActiveSection(section);
+          break;
+        }
+      }
+    }
   };
 
   useEffect(() => {
@@ -17,57 +35,110 @@ const Navbar = () => {
     };
   }, []);
 
+  const navLinks = [
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "Experience", label: "Experience" }, // Changed id to match section ID
+    { id: "projects", label: "Projects" },
+    { id: "Footer", label: "Contact" } // Changed id to match section ID
+  ];
+
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = id === 'Experience' || id === 'Footer' ? 0 : 80; // Adjust offset for these sections
+      window.scrollTo({
+        top: element.offsetTop - offset,
+        behavior: "smooth"
+      });
+    }
+    openMenu(false);
+  };
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 flex flex-wrap justify-between md:items-center ${scrolled ? 'bg-white' : 'bg-transparent'} shadow-md z-50 transition-colors duration-300`}>
-      <span className={`text-xl font-bold tracking-wide ${scrolled ? 'text-black' : 'text-white'} px-10 pt-6 md:px-20`}>
-        Portfolio
-      </span>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      scrolled ? 'py-3 glass-effect backdrop-blur-md' : 'py-5 bg-transparent'
+    }`}>
+      <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
+        {/* Logo */}
+        <div className="relative">
+          <span className={`text-2xl font-bold ${scrolled ? 'gradient-text' : 'text-white neon-text'}`}>
+            Charu<span className="text-[#ea9f12]">.</span>
+          </span>
+          {!scrolled && (
+            <div className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ea9f12] to-transparent"></div>
+          )}
+        </div>
 
-      {/* Navigation Links */}
-      <ul
-        className={`${
-          menu ? "block" : "hidden"
-        } mx-24 py-2 mt-4 font-semibold md:mt-0 bg-opacity-90 md:bg-transparent md:static md:mx-0 md:flex gap-6`}
-      >
-        <a href="#About">
-          <li className={`text-md transition-all duration-300 p-1 md:p-0 hover:text-yellow-300 ${scrolled ? 'text-black' : 'text-white'} border-b-2 border-transparent hover:border-yellow-300`}>
-            About
-          </li>
-        </a>
-        <a href="#Experience">
-          <li className={`text-md transition-all duration-300 p-1 md:p-0 hover:text-yellow-300 ${scrolled ? 'text-black' : 'text-white'} border-b-2 border-transparent hover:border-yellow-300`}>
-            Experience
-          </li>
-        </a>
-        <a href="#Projects">
-          <li className={`text-md transition-all duration-300 p-1 md:p-0 hover:text-yellow-300 ${scrolled ? 'text-black' : 'text-white'} border-b-2 border-transparent hover:border-yellow-300`}>
-            Projects
-          </li>
-        </a>
-        <a href="#Footer">
-          <li className={`text-md transition-all duration-300 p-1 md:p-0 hover:text-yellow-300 ${scrolled ? 'text-black' : 'text-white'} border-b-2 border-transparent hover:border-yellow-300`}>
-            Contact
-          </li>
-        </a>
-      </ul>
+        {/* Desktop Navigation Links */}
+        <ul className="hidden md:flex items-center space-x-8">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <button
+                onClick={() => scrollToSection(link.id)}
+                className={`text-md font-medium transition-all duration-300 px-2 py-1 relative ${
+                  activeSection === link.id 
+                    ? 'text-[#ea9f12]' 
+                    : scrolled ? 'text-white hover:text-[#ea9f12]' : 'text-white hover:text-[#ea9f12]'
+                }`}
+              >
+                {link.label}
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[#ea9f12] transform scale-x-0 transition-transform duration-300 ${
+                  activeSection === link.id ? 'scale-x-100' : ''
+                }`}></span>
+              </button>
+            </li>
+          ))}
+        </ul>
 
-      {/* Mobile Menu Icon */}
-      <div className="md:hidden absolute right-10 top-6 transition-all duration-300">
-        {menu ? (
-          <RiCloseLine
-            size={30}
-            onClick={() => openMenu(false)}
-            aria-label="Close menu"
-            className={`cursor-pointer ${scrolled ? 'text-black' : 'text-white'}`}
-          />
-        ) : (
-          <RiMenu2Line
-            size={30}
-            onClick={() => openMenu(true)}
-            aria-label="Open menu"
-            className={`cursor-pointer ${scrolled ? 'text-black' : 'text-white'}`}
-          />
-        )}
+        {/* Contact Button */}
+        <button className="hidden md:block py-2 px-5 bg-[#ea9f12] text-white rounded-full text-sm font-medium hover:bg-opacity-80 transition-all duration-300 hover:scale-105">
+          Let's Talk
+        </button>
+
+        {/* Mobile Menu Icon */}
+        <div className="md:hidden">
+          <button
+            onClick={() => openMenu(!menu)}
+            aria-label={menu ? "Close menu" : "Open menu"}
+            className="text-white focus:outline-none"
+          >
+            {menu ? (
+              <RiCloseLine size={30} className="text-[#ea9f12]" />
+            ) : (
+              <RiMenu2Line size={30} className={scrolled ? 'text-[#ea9f12]' : 'text-white'} />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`md:hidden transition-all duration-500 overflow-hidden ${
+        menu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      }`}>
+        <div className="glass-effect px-6 py-4 mt-2 rounded-lg mx-4">
+          <ul className="space-y-4 py-2">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSection === link.id 
+                      ? 'bg-[#ea9f12] bg-opacity-20 text-[#ea9f12]' 
+                      : 'text-white hover:bg-[#ea9f12] hover:bg-opacity-10'
+                  }`}
+                >
+                  {link.label}
+                </button>
+              </li>
+            ))}
+            <li>
+              <button className="w-full mt-2 py-2 px-4 bg-[#ea9f12] text-white rounded-lg text-sm font-medium hover:bg-opacity-80 transition-all duration-300">
+                Let's Talk
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

@@ -2,8 +2,18 @@ import React from "react";
 import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact, FaGoogle, FaAmazon } from "react-icons/fa";
 import { SiRedis, SiMongodb } from "react-icons/si";
 import { RiNetflixFill } from "react-icons/ri";
+import { FaCertificate } from "react-icons/fa"; // Add this import
 
 const Experience = () => {
+  const handleCertificateClick = (certificatePath) => {
+    const link = document.createElement('a');
+    link.href = certificatePath;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div id="Experience" className="p-10 md:p-24 bg-sky-400 text-white">
       {/* Heading */}
@@ -42,6 +52,7 @@ const Experience = () => {
               role: "Software Engineer",
               date: "January 2025 - Present",
               tasks: ["Work as software developer", "Internship"],
+              certificate: "/emertxe_internship_certificate_Charu_Sarswat (1).pdf"
             },
             {
               company: "Smart Intern",
@@ -49,6 +60,7 @@ const Experience = () => {
               role: "Web Developer",
               date: "Jan 2022 - March 2025",
               tasks: ["Developed scalable backend APIs", "Optimized database queries"],
+              certificate: "/SMAT_Certificate.pdf"
             },
             {
               company: "Adi foundation",
@@ -63,7 +75,7 @@ const Experience = () => {
               className="flex gap-6 items-center p-6 bg-[#112240] bg-opacity-90 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <span className="text-4xl">{job.icon}</span>
-              <div>
+              <div className="flex-grow">
                 <h2 className="text-xl font-semibold">{job.role}, {job.company}</h2>
                 <p className="text-sm font-thin">{job.date}</p>
                 <ul className="text-sm mt-2 list-disc pl-5">
@@ -72,6 +84,15 @@ const Experience = () => {
                   ))}
                 </ul>
               </div>
+              {job.certificate && (
+                <button
+                  onClick={() => handleCertificateClick(job.certificate)}
+                  className="flex items-center gap-2 px-4 py-2 bg-[#ea9f12] rounded-lg hover:bg-[#f8b02b] transition-colors duration-300"
+                >
+                  <FaCertificate />
+                  <span>Certificate</span>
+                </button>
+              )}
             </div>
           ))}
         </div>
