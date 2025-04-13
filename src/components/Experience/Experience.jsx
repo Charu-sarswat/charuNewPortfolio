@@ -2,12 +2,23 @@ import React from "react";
 import { FaCss3, FaFigma, FaHtml5, FaJs, FaReact, FaGoogle, FaAmazon } from "react-icons/fa";
 import { SiRedis, SiMongodb } from "react-icons/si";
 import { RiNetflixFill } from "react-icons/ri";
-import { FaCertificate } from "react-icons/fa"; // Add this import
+import { FaCertificate } from "react-icons/fa";
+import { VscLaw } from "react-icons/vsc"; // Add patent icon
 
 const Experience = () => {
   const handleCertificateClick = (certificatePath) => {
     const link = document.createElement('a');
     link.href = certificatePath;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Add patent redirect handler
+  const handlePatentClick = () => {
+    const link = document.createElement('a');
+    link.href = '/202411019504.pdf'; // Path to your patent PDF
     link.target = '_blank';
     document.body.appendChild(link);
     link.click();
@@ -26,7 +37,22 @@ const Experience = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Experience <span className="text-[#ea9f12]">& Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-[#ea9f12] mx-auto"></div>
+          <div className="w-24 h-1 bg-[#ea9f12] mx-auto mb-6"></div>
+          
+          {/* Patent Section */}
+          <div className="mt-4 flex flex-col items-center">
+            <p className="text-white/70 mb-2 text-sm">Patent: Accident Control System</p>
+            <button
+              onClick={handlePatentClick}
+              className="px-6 py-3 bg-gradient-to-r from-[#ea9f12] to-[#f8b02b]
+                       rounded-lg hover:shadow-lg hover:shadow-[#ea9f12]/25 
+                       transition-all duration-300 transform hover:scale-105
+                       flex items-center gap-2"
+            >
+              <VscLaw className="text-xl" />
+              <span>View Patent</span>
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-start justify-around gap-16">

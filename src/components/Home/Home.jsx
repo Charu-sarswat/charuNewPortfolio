@@ -29,7 +29,10 @@ const Home = () => {
   return (
     <div
       id="home"
-      className="relative bg-cover bg-center text-white flex flex-col md:flex-row w-full justify-between items-center p-6 md:p-20 min-h-screen overflow-hidden"
+      className="relative bg-cover bg-center text-white min-h-screen overflow-hidden
+                 flex flex-col md:flex-row items-center justify-center
+                 px-4 sm:px-6 md:px-12 lg:px-20 py-20 md:py-0
+                 gap-8 md:gap-12"
       style={{ 
         backgroundImage: `linear-gradient(rgba(15, 20, 36, 0.9), rgba(23, 29, 50, 0.8)), url(${backgroundImg})`,
         backgroundAttachment: 'fixed'
@@ -42,22 +45,27 @@ const Home = () => {
       
       {/* Left Content */}
       <div 
-        className="md:w-2/4 md:pt-10 space-y-6 z-10 mb-10 md:mb-0"
+        className="w-full md:w-2/4 flex flex-col items-center md:items-start 
+                   space-y-6 z-10 text-center md:text-left"
         data-aos="fade-right" 
         data-aos-duration="1000"
       >
-        <div className="mb-6">
+        <div className="w-full mb-6">
           <TextChange />
         </div>
         
-        <p className="text-sm md:text-xl tracking-tight text-white glass-effect p-4 rounded-lg">
+        <p className="text-base sm:text-lg md:text-xl tracking-tight text-white/90 
+                      glass-effect p-4 rounded-lg max-w-2xl mx-auto md:mx-0">
           I am a passionate developer specializing in frontend, backend, and database development.
           Creating beautiful, functional, and user-friendly digital experiences.
         </p>
         
-        <div className="flex gap-4 mt-6">
+        <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-6 w-full">
           <button
-            className="glow-effect text-white py-3 px-6 text-sm md:text-lg font-semibold rounded-full hover:opacity-85 duration-300 hover:scale-105 flex items-center gap-2"
+            className="glow-effect text-white py-2.5 px-5 sm:py-3 sm:px-6 
+                     text-sm md:text-base font-semibold rounded-full 
+                     hover:opacity-85 duration-300 hover:scale-105 
+                     flex items-center gap-2 min-w-[160px] justify-center"
             style={{ backgroundColor: '#ea9f12' }}
           >
             <FaEnvelope className="text-lg" />
@@ -66,10 +74,13 @@ const Home = () => {
           
           <button
             onClick={handleDownloadCV}
-            className="py-3 px-6 text-sm md:text-lg font-semibold rounded-full border-2 border-[#ea9f12] text-white hover:bg-[#ea9f12] transition-all duration-300 hover:scale-105 flex items-center gap-2"
+            className="py-2.5 px-5 sm:py-3 sm:px-6 text-sm md:text-base 
+                     font-semibold rounded-full border-2 border-[#ea9f12] 
+                     text-white hover:bg-[#ea9f12] transition-all duration-300 
+                     hover:scale-105 flex items-center gap-2 min-w-[160px] justify-center"
           >
             <svg 
-              className="w-5 h-5" 
+              className="w-4 h-4 sm:w-5 sm:h-5" 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -86,7 +97,7 @@ const Home = () => {
         </div>
         
         {/* Social icons */}
-        <div className="flex gap-4 mt-6">
+        <div className="flex gap-6 mt-6">
           <a href="#" className="text-white hover:text-[#ea9f12] transition-colors duration-300 text-2xl">
             <FaGithub />
           </a>
@@ -101,21 +112,22 @@ const Home = () => {
 
       {/* Right Image Section */}
       <div 
-        className="relative"
+        className="relative w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px]
+                   mt-8 md:mt-0"
         data-aos="fade-left" 
         data-aos-duration="1000"
       >
         <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ea9f12] to-[#f8b02b] blur-xl opacity-20 animate-pulse"></div>
         <img 
-          className="w-64 md:w-80 lg:w-96 transition-transform duration-300 hover:scale-105 relative z-10 floating" 
+          className="relative z-10 w-full h-auto transition-transform duration-300 hover:scale-105 floating" 
           src={avatarImg} 
           alt="Avatar" 
         />
         <div className="absolute -bottom-5 -left-5 -right-5 h-10 bg-black opacity-20 blur-lg rounded-full z-0"></div>
       </div>
       
-      {/* Scroll down indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
+      {/* Scroll down indicator - Hide on small screens */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
         <p className="text-white text-sm mb-2">Scroll Down</p>
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-2 bg-white rounded-full mt-2 animate-bounce"></div>
