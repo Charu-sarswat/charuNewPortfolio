@@ -26,6 +26,13 @@ const Home = () => {
     document.body.removeChild(link);
   };
 
+  const handleScrollDown = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
       id="home"
@@ -126,13 +133,19 @@ const Home = () => {
         <div className="absolute -bottom-5 -left-5 -right-5 h-10 bg-black opacity-20 blur-lg rounded-full z-0"></div>
       </div>
       
-      {/* Scroll down indicator - Hide on small screens */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
-        <p className="text-white text-sm mb-2">Scroll Down</p>
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-white rounded-full mt-2 animate-bounce"></div>
+      {/* Modified Scroll down indicator - Visible on all screens */}
+      <button 
+        onClick={handleScrollDown}
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center
+                   cursor-pointer transition-all duration-300 hover:scale-110 group"
+      >
+        <p className="text-white/70 group-hover:text-white text-sm mb-2">
+          Scroll Down
+        </p>
+        <div className="w-6 h-10 border-2 border-[#ea9f12] rounded-full flex justify-center relative overflow-hidden">
+          <div className="w-1.5 h-1.5 bg-[#ea9f12] rounded-full animate-scrollDot"></div>
         </div>
-      </div>
+      </button>
     </div>
   );
 };

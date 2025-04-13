@@ -33,37 +33,48 @@ const Experience = () => {
       <div className="absolute bottom-40 left-10 w-60 h-60 rounded-full bg-[#ea9f12] opacity-5 floating"></div>
 
       <div className="container relative z-10 mx-auto px-4 md:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
+        {/* Modified Section Header */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-3">
             Experience <span className="text-[#ea9f12]">& Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-[#ea9f12] mx-auto"></div>
+          <div className="w-24 h-1 bg-[#ea9f12] mx-auto mb-8"></div>
           
-          {/* Patent Section */}
-          <div className="mt-8 inline-block p-4 glass-effect rounded-xl border border-[#ea9f12]/20">
-            <p className="text-lg text-white/80 mb-3">
-              Patent: <span className="text-[#ea9f12]">Accident Control System</span>
+          {/* Modified Patent Section */}
+          <div className="mx-4 md:mx-auto max-w-lg p-4 md:p-6 glass-effect rounded-xl border border-[#ea9f12]/20">
+            <p className="text-base md:text-lg text-white/80 mb-3">
+              Patent: <span className="text-[#ea9f12] font-medium">Accident Control System</span>
             </p>
             <button
               onClick={handlePatentClick}
               className="px-6 py-2.5 bg-gradient-to-r from-[#ea9f12] to-[#f8b02b]
                        rounded-lg hover:shadow-lg hover:shadow-[#ea9f12]/25 
-                       transition-all duration-300 flex items-center gap-2 mx-auto"
+                       transition-all duration-300 flex items-center gap-2 mx-auto
+                       text-sm md:text-base font-medium"
             >
-              <VscLaw className="text-xl" />
+              <VscLaw className="text-lg" />
               <span>View Patent</span>
             </button>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8">
-          {/* Skills Section */}
-          <div className="lg:col-span-2 glass-effect p-6 rounded-xl border border-[#ea9f12]/10">
-            <h3 className="text-xl font-bold mb-6 text-center">
+        {/* Add Scroll Down Indicator */}
+        <div className="flex flex-col items-center mt-8">
+          <div className="animate-bounce flex flex-col items-center">
+            <p className="text-sm text-gray-400 mb-2">Scroll Down</p>
+            <div className="w-6 h-10 border-2 border-[#ea9f12] rounded-full flex justify-center relative">
+              <div className="w-1.5 h-1.5 bg-[#ea9f12] rounded-full absolute top-2 animate-scrollDown"></div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-6 md:gap-8">
+          {/* Modified Skills Section */}
+          <div className="lg:col-span-2 glass-effect p-4 md:p-6 rounded-xl border border-[#ea9f12]/10">
+            <h3 className="text-lg md:text-xl font-bold mb-6 text-center">
               Technical <span className="text-[#ea9f12]">Skills</span>
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
               {[
                 { icon: <FaHtml5 color="#E34F26" />, name: "HTML" },
                 { icon: <FaCss3 color="#1572B6" />, name: "CSS" },
@@ -94,9 +105,9 @@ const Experience = () => {
             </div>
           </div>
 
-          {/* Experience Section */}
-          <div className="lg:col-span-3 space-y-6">
-            <h3 className="text-xl font-bold mb-6 text-center lg:text-left">
+          {/* Modified Experience Section */}
+          <div className="lg:col-span-3 space-y-4 md:space-y-6">
+            <h3 className="text-lg md:text-xl font-bold mb-4 md:mb-6 text-center lg:text-left">
               Work <span className="text-[#ea9f12]">Experience</span>
             </h3>
             {[
