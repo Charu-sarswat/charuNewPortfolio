@@ -26,28 +26,30 @@ const Experience = () => {
   };
 
   return (
-    <div id="Experience" className="relative py-20 min-h-screen text-white overflow-hidden">
-      {/* Background decorative elements */}
+    <div id="Experience" className="relative py-16 md:py-24 min-h-screen text-white">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 bg-[#0a192f]/90"></div>
       <div className="absolute top-20 right-10 w-40 h-40 rounded-full bg-[#ea9f12] opacity-5 floating"></div>
-      <div className="absolute bottom-40 left-10 w-60 h-60 rounded-full bg-[#ea9f12] opacity-5 floating" style={{animationDelay: '1.5s'}}></div>
-      
-      <div className="container mx-auto px-6 md:px-12">
-        {/* Section title */}
-        <div className="text-center mb-16" data-aos="fade-up">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+      <div className="absolute bottom-40 left-10 w-60 h-60 rounded-full bg-[#ea9f12] opacity-5 floating"></div>
+
+      <div className="container relative z-10 mx-auto px-4 md:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4">
             Experience <span className="text-[#ea9f12]">& Skills</span>
           </h2>
-          <div className="w-24 h-1 bg-[#ea9f12] mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-[#ea9f12] mx-auto"></div>
           
           {/* Patent Section */}
-          <div className="mt-4 flex flex-col items-center">
-            <p className="text-white/70 mb-2 text-sm">Patent: Accident Control System</p>
+          <div className="mt-8 inline-block p-4 glass-effect rounded-xl border border-[#ea9f12]/20">
+            <p className="text-lg text-white/80 mb-3">
+              Patent: <span className="text-[#ea9f12]">Accident Control System</span>
+            </p>
             <button
               onClick={handlePatentClick}
-              className="px-6 py-3 bg-gradient-to-r from-[#ea9f12] to-[#f8b02b]
+              className="px-6 py-2.5 bg-gradient-to-r from-[#ea9f12] to-[#f8b02b]
                        rounded-lg hover:shadow-lg hover:shadow-[#ea9f12]/25 
-                       transition-all duration-300 transform hover:scale-105
-                       flex items-center gap-2"
+                       transition-all duration-300 flex items-center gap-2 mx-auto"
             >
               <VscLaw className="text-xl" />
               <span>View Patent</span>
@@ -55,10 +57,13 @@ const Experience = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-start justify-around gap-16">
-          {/* Technologies Section */}
-          <div className="glass-effect w-full md:w-2/5 p-8 rounded-xl relative overflow-hidden border border-white/10">
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+        <div className="grid lg:grid-cols-5 gap-8">
+          {/* Skills Section */}
+          <div className="lg:col-span-2 glass-effect p-6 rounded-xl border border-[#ea9f12]/10">
+            <h3 className="text-xl font-bold mb-6 text-center">
+              Technical <span className="text-[#ea9f12]">Skills</span>
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 gap-4">
               {[
                 { icon: <FaHtml5 color="#E34F26" />, name: "HTML" },
                 { icon: <FaCss3 color="#1572B6" />, name: "CSS" },
@@ -87,14 +92,13 @@ const Experience = () => {
                 </div>
               ))}
             </div>
-            
-            {/* Corner Decorations */}
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#ea9f12]/20 to-transparent rounded-bl-full"></div>
-            <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-[#ea9f12]/20 to-transparent rounded-tr-full"></div>
           </div>
 
-          {/* Work Experience Section */}
-          <div className="w-full md:w-3/5 space-y-8">
+          {/* Experience Section */}
+          <div className="lg:col-span-3 space-y-6">
+            <h3 className="text-xl font-bold mb-6 text-center lg:text-left">
+              Work <span className="text-[#ea9f12]">Experience</span>
+            </h3>
             {[
               {
                 company: "Emertex",
